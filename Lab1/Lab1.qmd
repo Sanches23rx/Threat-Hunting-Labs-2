@@ -140,7 +140,7 @@ my_div
  In this lesson, you'll learn how to examine your local workspace in R and begin to explore
 | the relationship between your workspace and the file system of your machine.
 
-```{r}
+```{r, echo=FALSE}
 getwd()
 
 ls()
