@@ -5,10 +5,6 @@ format:
     md:
         output-file: README.md
 engine: knitr
-include: false
-editor: 
-  markdown: 
-    wrap: 72
 ---
 
 ## Цель работы
@@ -25,10 +21,7 @@ editor:
 5 + 7
 ```
 
-To assign the result of 5 + 7 to a new variable called x, you type x \<-
-5 + 7. This can be \| read as 'x gets 5 plus 7'. Give it a try now. \|
-To view the contents of the variable x, just type x and press Enter. Try
-it now.
+To assign the result of 5 + 7 to a new variable called x, you type x \<- 5 + 7. This can be \| read as 'x gets 5 plus 7'. Give it a try now. \| To view the contents of the variable x, just type x and press Enter. Try it now.
 
 ```{r}
 x <- 5 + 7
@@ -42,41 +35,31 @@ y <- x - 3
 y
 ```
 
-The easiest way to create a vector is with the c() function, which
-stands for 'concatenate' \| or 'combine'. To create a vector containing
-the numbers 1.1, 9, and 3.14, type c(1.1, 9, \| 3.14). Try it now and
-store the result in a variable called z.
+The easiest way to create a vector is with the c() function, which stands for 'concatenate' \| or 'combine'. To create a vector containing the numbers 1.1, 9, and 3.14, type c(1.1, 9, \| 3.14). Try it now and store the result in a variable called z.
 
 ```{r}
 z <- c(1.1, 9, 3.14)
 ```
 
-Anytime you have questions about a particular function, you can access
-R's built-in help \| files via the `?` command. For example, if you want
-more information on the c() function, \| type ?c without the parentheses
-that normally follow a function name. Give it a try.
+Anytime you have questions about a particular function, you can access R's built-in help \| files via the `?` command. For example, if you want more information on the c() function, \| type ?c without the parentheses that normally follow a function name. Give it a try.
 
 ```{r}
 ?c
 ```
 
-Type z to view its contents. Notice that there are no commas separating
-the values in the \| output
+Type z to view its contents. Notice that there are no commas separating the values in the \| output
 
 ```{r}
 z
 ```
 
-You can combine vectors to make a new vector. Create a new vector that
-contains z, 555, then \| z again in that order. Don't assign this vector
-to a new variable, so that we can just see \| the result immediately.
+You can combine vectors to make a new vector. Create a new vector that contains z, 555, then \| z again in that order. Don't assign this vector to a new variable, so that we can just see \| the result immediately.
 
 ```{r}
 c(z, 555, z)
 ```
 
-Numeric vectors can be used in arithmetic expressions. Type the
-following to see what \| happens: z \* 2 + 100.
+Numeric vectors can be used in arithmetic expressions. Type the following to see what \| happens: z \* 2 + 100.
 
 ```{r}
 z * 2 + 100
@@ -90,8 +73,7 @@ my_sqrt <- sqrt(z - 1)
 
 | Before we view the contents of the my_sqrt variable, what do you think it contains?
 
-1: a vector of length 0 (i.e. an empty vector) 2: a vector of length 3
-3: a single number (i.e a vector of length 1)
+1: a vector of length 0 (i.e. an empty vector) 2: a vector of length 3 3: a single number (i.e a vector of length 1)
 
 Answer: 2
 
@@ -143,9 +125,7 @@ my_div
 
 ### Задание 2. Workspace and Files
 
-In this lesson, you'll learn how to examine your local workspace in R
-and begin to explore \| the relationship between your workspace and the
-file system of your machine.
+In this lesson, you'll learn how to examine your local workspace in R and begin to explore \| the relationship between your workspace and the file system of your machine.
 
 ```{r}
 getwd()
