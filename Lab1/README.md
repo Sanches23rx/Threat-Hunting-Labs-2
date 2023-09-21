@@ -174,8 +174,114 @@ my_div
 
     [1] 3.478505 3.181981 2.146460
 
-### Задание 2 Workspace and Files
+### Задание 2. Workspace and Files
 
-### Задание 3
+In this lesson, you’ll learn how to examine your local workspace in R
+and begin to explore | the relationship between your workspace and the
+file system of your machine.
+
+``` r
+getwd()
+```
+
+    [1] "C:/Users/rudzs/OneDrive/Рабочий стол/УНИВЕР/7сем/Threat Hunting/Lab1/Lab1"
+
+``` r
+ls()
+```
+
+    [1] "my_div"  "my_sqrt" "x"       "y"       "z"      
+
+``` r
+x <- 9
+
+ls()
+```
+
+    [1] "my_div"  "my_sqrt" "x"       "y"       "z"      
+
+``` r
+dir()
+```
+
+    [1] "Lab1.qmd"       "Lab1.rmarkdown" "README.md"     
+
+``` r
+?list.files
+
+args(list.files)
+```
+
+    function (path = ".", pattern = NULL, all.files = FALSE, full.names = FALSE, 
+        recursive = FALSE, ignore.case = FALSE, include.dirs = FALSE, 
+        no.. = FALSE) 
+    NULL
+
+``` r
+old.dir <- getwd()
+
+dir.create("testdir")
+
+setwd("testdir")
+
+file.create("mytest.R")
+```
+
+    [1] TRUE
+
+``` r
+list.files()
+```
+
+    [1] "mytest.R"
+
+``` r
+file.exists("mytest.R")
+```
+
+    [1] TRUE
+
+``` r
+file.info("mytest.R")
+```
+
+             size isdir mode               mtime               ctime
+    mytest.R    0 FALSE  666 2023-09-21 11:41:30 2023-09-21 11:41:30
+                           atime exe
+    mytest.R 2023-09-21 11:41:30  no
+
+``` r
+file.rename("mytest.R", "mytest2.R")
+```
+
+    [1] TRUE
+
+``` r
+file.copy("mytest2.R", "mytest3.R")
+```
+
+    [1] TRUE
+
+``` r
+file.path("mytest3.R")
+```
+
+    [1] "mytest3.R"
+
+``` r
+file.path("folder1", "folder2")
+```
+
+    [1] "folder1/folder2"
+
+``` r
+?dir.create
+
+dir.create(file.path('testdir2', 'testdir3'), recursive = TRUE)
+
+setwd(old.dir)
+```
+
+### Задание 3. Sequences of Numbers
 
 ### Задание 4

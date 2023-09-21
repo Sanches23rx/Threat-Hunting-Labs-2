@@ -136,11 +136,56 @@ my_div
 ```
 
 
-### Задание 2 Workspace and Files
+### Задание 2. Workspace and Files
+ In this lesson, you'll learn how to examine your local workspace in R and begin to explore
+| the relationship between your workspace and the file system of your machine.
 
+```{r}
+getwd()
 
+ls()
 
-### Задание 3
+x <- 9
+
+ls()
+
+dir()
+
+?list.files
+
+args(list.files)
+
+old.dir <- getwd()
+
+dir.create("testdir")
+
+setwd("testdir")
+
+file.create("mytest.R")
+
+list.files()
+
+file.exists("mytest.R")
+
+file.info("mytest.R")
+
+file.rename("mytest.R", "mytest2.R")
+
+file.copy("mytest2.R", "mytest3.R")
+
+file.path("mytest3.R")
+
+file.path("folder1", "folder2")
+
+?dir.create
+
+dir.create(file.path('testdir2', 'testdir3'), recursive = TRUE)
+
+setwd(old.dir)
+
+```
+
+### Задание 3. Sequences of Numbers
 
 
 
