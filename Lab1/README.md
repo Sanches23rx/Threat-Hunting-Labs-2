@@ -177,14 +177,14 @@ my_div
 ### Задание 2. Workspace and Files
 
 In this lesson, you’ll learn how to examine your local workspace in R
-and begin to explore | the relationship between your workspace and the
+and begin to explore the relationship between your workspace and the
 file system of your machine.
 
 ``` r
 getwd()
 ```
 
-    [1] "C:/Users/rudzs/OneDrive/Рабочий стол/УНИВЕР/7сем/Threat Hunting/Lab1/Lab1"
+    [1] "C:/Users/rudzs/Рабочий стол/УНИВЕР/7сем/Threat Hunting/Lab1/Lab1"
 
 ``` r
 ls()
@@ -250,9 +250,9 @@ file.info("mytest.R")
 ```
 
              size isdir mode               mtime               ctime
-    mytest.R    0 FALSE  666 2023-09-21 12:05:05 2023-09-21 12:05:05
+    mytest.R    0 FALSE  666 2023-09-24 14:24:56 2023-09-24 14:24:56
                            atime exe
-    mytest.R 2023-09-21 12:05:05  no
+    mytest.R 2023-09-24 14:24:56  no
 
 ``` r
 file.rename("mytest.R", "mytest2.R")
@@ -377,3 +377,69 @@ rep(c(0, 1, 2), each = 10)
 ### Задание 4. Vectors
 
 The simplest and most common data structure in R is the vector.
+
+``` r
+num_vect <- c(0.5, 55, -10, 6)
+tf <- num_vect < 1
+tf
+```
+
+    [1]  TRUE FALSE  TRUE FALSE
+
+``` r
+num_vect >= 6
+```
+
+    [1] FALSE  TRUE FALSE  TRUE
+
+``` r
+my_char <- c("My", "name", "is")
+my_char
+```
+
+    [1] "My"   "name" "is"  
+
+``` r
+paste(my_char, collapse = " ")
+```
+
+    [1] "My name is"
+
+``` r
+c(my_char, "Sanches23rx")
+```
+
+    [1] "My"          "name"        "is"          "Sanches23rx"
+
+``` r
+my_name <- c(my_char, "Sanches23rx")
+my_name
+```
+
+    [1] "My"          "name"        "is"          "Sanches23rx"
+
+``` r
+paste(my_name, collapse = " ")
+```
+
+    [1] "My name is Sanches23rx"
+
+``` r
+paste("Hello", "world!", sep = " ")
+```
+
+    [1] "Hello world!"
+
+``` r
+paste(c(1:3), c("X", "Y", "Z"), sep = "")
+```
+
+    [1] "1X" "2Y" "3Z"
+
+``` r
+paste(LETTERS, 1:4, sep = "-")
+```
+
+     [1] "A-1" "B-2" "C-3" "D-4" "E-1" "F-2" "G-3" "H-4" "I-1" "J-2" "K-3" "L-4"
+    [13] "M-1" "N-2" "O-3" "P-4" "Q-1" "R-2" "S-3" "T-4" "U-1" "V-2" "W-3" "X-4"
+    [25] "Y-1" "Z-2"
