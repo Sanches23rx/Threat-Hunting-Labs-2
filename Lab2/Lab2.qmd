@@ -17,47 +17,80 @@ engine: knitr
 
 ### Проанализировать встроенный в пакет dplyr набор данных starwars с помощью языка R и ответить на вопросы:
 
+```{r}
+library(dplyr)
+```
+
 #### 1. Сколько строк в датафрейме?
 
-
+```{r}
+starwars %>% nrow()
+```
 
 #### 2. Сколько столбцов в датафрейме?
 
-
+```{r}
+starwars %>% ncol()
+```
 
 #### 3. Как просмотреть примерный вид датафрейма?
 
-
+```{r}
+starwars %>% glimpse()
+```
 
 #### 4. Сколько уникальных рас персонажей (species) представлено в данных?
 
-
+```{r}
+length(unique(starwars$species))
+```
 
 #### 5. Найти самого высокого персонажа.
 
-
+```{r}
+max(starwars$height, na.rm = TRUE)
+```
 
 #### 6. Найти всех персонажей ниже 170
 
-
+```{r}
+starwars %>% select(name, height) %>% filter(height < 170)
+```
 
 #### 7. Подсчитать ИМТ (индекс массы тела) для всех персонажей.
 
-
+```{r}
+imt <- round((starwars$mass/((starwars$height/100)**2)), digits = 0)
+data.frame(starwars$name, imt)
+```
 
 #### 8. Найти 10 самых “вытянутых” персонажей. “Вытянутость” оценить по отношению массы (mass) к росту (height) персонажей.
 
-
+```{r}
+vityanutost <- starwars$mass/starwars$height
+df <- data.frame(starwars$name, vityanutost)
+df <- arrange(df, desc(vityanutost))
+top_n(df, 10)
+```
 
 #### 9. Найти средний возраст персонажей каждой расы вселенной Звездных войн
 
-
+```{r}
+library(tidyr)
+starwars %>% group_by(species) %>% drop_na() %>% summarise(mean(birth_year, trim = 0, na.rm = TRUE))
+```
 
 #### 10. Найти самый распространенный цвет глаз персонажей вселенной Звездных войн.
 
-
+```{r}
+df1 <- starwars %>% group_by(eye_color) %>% summarise('count' = n())
+arran <- arrange(df1, desc(count))
+top_n(arran, 1)
+```
 
 #### 11. Подсчитать среднюю длину имени в каждой расе вселенной Звездных войн.
 
-
+```{r}
+starwars %>% group_by(species) %>% summarise(mean(nchar(name), trim = 0, na.rm = TRUE))
+```
 
