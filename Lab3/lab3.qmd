@@ -1,5 +1,5 @@
 ---
-title: "Основы обработки данных с помощью R"
+title: "Основы обработки данных с помощью R - 3"
 author: sanches23rx
 format: 
     md:
@@ -24,7 +24,9 @@ library(nycflights13)
 
 ### 1. Сколько встроенных в пакет nycflights13 датафреймов?
 
+nycflights13::
 
+Ответ: 5 датафреймов
 
 ### 2. Сколько строк в каждом датафрейме?
 
@@ -34,7 +36,6 @@ nycflights13::airports %>% nrow()
 nycflights13::flights %>% nrow()
 nycflights13::planes %>% nrow()
 nycflights13::weather %>% nrow()
-
 ```
 
 ### 3. Сколько столбцов в каждом датафрейме?
@@ -56,7 +57,7 @@ nycflights13::airports %>% glimpse()
 ### 5. Сколько компаний-перевозчиков (carrier) учитывают эти наборы данных (представлено в наборах данных)?
 
 ```{r}
-
+nycflights13::airlines %>% nrow()
 ```
 
 ### 6. Сколько рейсов принял аэропорт John F Kennedy Intl в мае?
@@ -68,25 +69,42 @@ nycflights13::flights %>% filter(month == 5, origin == "JFK") %>% nrow()
 ### 7. Какой самый северный аэропорт?
 
 ```{r}
-
+maxx <- max(nycflights13::airports$lat, na.rm = TRUE)
+nycflights13::airports %>% select(name, lat) %>% filter(lat == maxx)
 ```
 
 ### 8. Какой аэропорт самый высокогорный (находится выше всех над уровнем моря)?
 
-
+```{r}
+nycflights13::airports %>% arrange(desc(alt)) %>% select(name, alt) %>% top_n(1)
+```
 
 ### 9. Какие бортовые номера у самых старых самолетов?
 
-
+```{r}
+nycflights13::planes %>% select(tailnum, year) %>% filter(year == min(year, na.rm = TRUE))
+```
 
 ### 10. Какая средняя температура воздуха была в сентябре в аэропорту John F Kennedy Intl (в градусах Цельсия).
 
-
+```{r}
+nycflights13::weather %>% filter(month == 9, origin == "JFK") %>% summarise('temperature' = ((temp_mean = mean(temp, 0, na.rm = TRUE))-32)*5/9)
+```
 
 ### 11. Самолеты какой авиакомпании совершили больше всего вылетов в июне?
 
-
+```{r}
+df1 <- nycflights13::flights %>% group_by(carrier) %>% summarise('count_of_flights' = n())
+arran <- arrange(df1, desc(count_of_flights))
+topn <- top_n(arran, 1)
+filter(nycflights13::airlines, carrier == topn$carrier)
+```
 
 ### 12. Самолеты какой авиакомпании задерживались чаще других в 2013 году?
 
-
+```{r}
+df2 <- nycflights13::flights %>% group_by(carrier) %>% filter(dep_delay > 0, arr_delay > 0) %>% summarise('counts' = n())
+arran2 <- arrange(df2, desc(counts))
+topn2 <- top_n(arran2, 1)
+filter(nycflights13::airlines, carrier == topn2$carrier)
+```
