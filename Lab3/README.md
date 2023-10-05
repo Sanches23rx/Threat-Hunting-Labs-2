@@ -137,10 +137,14 @@ nycflights13::airlines %>% nrow()
 ### 6. Сколько рейсов принял аэропорт John F Kennedy Intl в мае?
 
 ``` r
-nycflights13::flights %>% filter(month == 5, origin == "JFK") %>% nrow()
+nazv <- nycflights13::airports %>% filter(name == 'John F Kennedy Intl') %>% select(faa)
+nycflights13::flights %>% filter(month == 5, dest == nazv) %>% nrow()
 ```
 
-    [1] 9397
+    Warning: Using one column matrices in `filter()` was deprecated in dplyr 1.1.0.
+    ℹ Please use one dimensional logical vectors instead.
+
+    [1] 0
 
 ### 7. Какой самый северный аэропорт?
 
